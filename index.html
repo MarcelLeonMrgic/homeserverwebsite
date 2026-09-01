@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WIRD GEIL WG // HOMESERVER</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__item">
+        Aus großer Kraft folgt große Verantwortung - Benjamin Parker &nbsp;///&nbsp;
+      </span>
+      <span class="marquee__item">
+        Aus großer Kraft folgt große Verantwortung - Benjamin Parker &nbsp;///&nbsp;
+      </span>
+    </div>
+  </div>
+
+  <!-- SVG-Filter: erst Graustufen, dann harte 2-Ton-Reduktion auf #000 / #EEE6C0 -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+    <filter id="duotone" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0.299 0.587 0.114 0 0
+                                           0.299 0.587 0.114 0 0
+                                           0.299 0.587 0.114 0 0
+                                           0     0     0     1 0" />
+      <feComponentTransfer>
+        <feFuncR type="discrete" tableValues="0 0.933" />
+        <feFuncG type="discrete" tableValues="0 0.902" />
+        <feFuncB type="discrete" tableValues="0 0.753" />
+      </feComponentTransfer>
+    </filter>
+    </defs>
+  </svg>
+
+  <!-- ===== HERO / NEANDERTHAL ===== -->
+  <header class="hero">
+    <figure class="hero__figure">
+      <!-- Aktuell Platzhalter. GIF von ArtStation als assets/neanderthal.gif ablegen
+           und src unten umstellen. Ist der Download ein MP4, den <video>-Block nutzen.
+           Der Pixel-/Duoton-Look kommt komplett aus CSS (.hero__media). -->
+      <img class="hero__media" src="assets/neandertaler.gif" alt="Neandertaler" />
+      <!-- <img class="hero__media" src="assets/neanderthal.gif" alt="Neandertaler" /> -->
+      <!--
+      <video class="hero__media" src="assets/neanderthal.mp4"
+             autoplay loop muted playsinline></video>
+      -->
+    </figure>
+    <h1 class="hero__title">WIRD GEIL WG // HOMESERVER</h1>
+  </header>
+
+  <!-- ===== LINKS (3 SPALTEN) ===== -->
+  <main class="grid">
+    <a class="cell" href="http://calibre.local" target="_blank" rel="noopener">
+      <span class="cell__index">01</span>
+      <span class="cell__name">Calibre&#8209;Web</span>
+      <span class="cell__desc">Bibliothek &middot; E&#8209;Books</span>
+    </a>
+    <a class="cell" href="http://jellyfin.local" target="_blank" rel="noopener">
+      <span class="cell__index">02</span>
+      <span class="cell__name">Jellyfin</span>
+      <span class="cell__desc">Filme &middot; Serien &middot; Musik</span>
+    </a>
+    <a class="cell" href="http://copyparty.local" target="_blank" rel="noopener">
+      <span class="cell__index">03</span>
+      <span class="cell__name">copyparty</span>
+      <span class="cell__desc">Datei&#8209;Upload &middot; Share</span>
+    </a>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <span>Wird Geil WG</span>
+  </footer>
+
+</body>
+</html>

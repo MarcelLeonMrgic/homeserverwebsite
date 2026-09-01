@@ -1,0 +1,192 @@
+/* ===================================================================
+   WIRD GEIL WG // HOMESERVER
+   Stil angelehnt an cyberspace.online
+   Nur zwei Farben: #000 (Hintergrund) und #EEE6C0 (alles andere)
+   =================================================================== */
+
+:root {
+  --bg: #000000;
+  --fg: #EEE6C0;
+  --line: 2px solid var(--fg);
+  --font: "SFMono-Regular", "SF Mono", "JetBrains Mono", "Fira Code",
+          "DejaVu Sans Mono", Menlo, Consolas, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== MARQUEE ===== */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: var(--line);
+  padding: 10px 0;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.marquee__track {
+  display: inline-flex;
+  will-change: transform;
+  animation: marquee 60s linear infinite;
+}
+
+.marquee__item {
+  padding-right: 2rem;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ===== HERO / NEANDERTHAL ===== */
+.hero {
+  border-bottom: var(--line);
+  padding: 3rem 1rem 2.5rem;
+  text-align: center;
+}
+
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.hero__figure {
+  /* --hero-ar = Seitenverhaeltnis des GIFs (Breite / Hoehe), z. B. 16 / 9 */
+  position: relative;
+  width: min(440px, 80vw);
+  aspect-ratio: var(--hero-ar, 1 / 1);
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Pixel-Look: Medium klein rastern lassen, dann per transform hart hochskalieren.
+   Pixelgroesse ueber das Paar width/height (12.5%) und scale(8) justieren. */
+.hero__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12.5%;
+  height: 12.5%;
+  transform: scale(8);
+  transform-origin: top left;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: url(#duotone);
+}
+
+.hero__title {
+  margin-top: 2rem;
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+
+/* ===== LINKS (3 SPALTEN) ===== */
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: clamp(2rem, 8vh, 6rem) 1.5rem;
+  min-height: 40vh;
+  border-right: var(--line);
+  transition: background 0.12s linear, color 0.12s linear;
+}
+
+.cell:last-child {
+  border-right: none;
+}
+
+.cell__index {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.cell__name {
+  font-size: clamp(1.3rem, 3.5vw, 2.4rem);
+  letter-spacing: 0.06em;
+}
+
+.cell__desc {
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
+}
+
+.cell:hover,
+.cell:focus-visible {
+  background: var(--fg);
+  color: var(--bg);
+  outline: none;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  border-top: var(--line);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .cell {
+    min-height: auto;
+    border-right: none;
+    border-bottom: var(--line);
+    text-align: center;
+    align-items: center;
+  }
+  .cell:last-child {
+    border-bottom: none;
+  }
+}
